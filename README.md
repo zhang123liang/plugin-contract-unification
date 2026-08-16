@@ -24,6 +24,14 @@ The script runs 10 self-tests and exits successfully when all pass.
 
 Claude Code and Codex can load this skill through `SKILL.md`.
 
+Conformance tests:
+
+```bash
+python -B conformance.py
+```
+
+See [SPEC.md](SPEC.md) for the language-neutral contract.
+
 ## Input To Output
 
 ```text

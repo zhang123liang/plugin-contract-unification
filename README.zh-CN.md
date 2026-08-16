@@ -23,6 +23,14 @@ python skill.py
 
 Claude Code / Codex 可通过 `SKILL.md` 加载本技能。
 
+一致性测试：
+
+```bash
+python -B conformance.py
+```
+
+语言无关契约见 `SPEC.md`。
+
 ## 输入 → 输出
 
 原始能力定义（函数/类/API） → 标准化 Plugin 描述符与运行时句柄
