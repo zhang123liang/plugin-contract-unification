@@ -1,89 +1,137 @@
 # Plugin Contract Unification
 
-> A self-contained atomic skill egg that solves the heterogeneous-component coupling problem.
+> One contract for every capability. Stop writing a new adapter for every tool.
 
-## What This Is
+## The Problem
 
-An atomic skill inspired by the public DeepSeek Harness design. It forces every
-component to follow one lifecycle contract, input/output schema, and error
-propagation model. Functions, classes, and APIs can be loaded, replaced, and
-invoked through a single registry.
+Functions, classes, APIs, tools, and agents usually come in different shapes.
+They have different call signatures, lifecycle rules, error styles, and
+configuration formats.
 
-- Breakthrough pattern: `form-shift`
-- Core principle: `interpose`
+As a project grows, this turns into custom glue code:
 
-## Run
+- one loader for a tool
+- one wrapper for an API
+- one adapter for a model
+- one special case for a service
 
-Zero dependencies:
+Every new capability becomes another integration problem.
 
-```bash
-python skill.py
+## The Atomic Idea
+
+Wrap every capability behind the same contract:
+
+```text
+name + schema + lifecycle + handler
 ```
 
-The script runs 10 self-tests and exits successfully when all pass.
+`handler` is the executable logic behind a capability.
 
-Claude Code and Codex can load this skill through `SKILL.md`.
+Then one registry can load, invoke, replace, and unload all of them the same
+way. This turns heterogeneous capabilities into replaceable plugins without
+rewriting the surrounding system.
 
-Conformance tests:
+## Why Developers Care
+
+- Fewer custom adapters.
+- Hot-swappable capabilities.
+- Consistent schema and error codes.
+- Clear lifecycle: register, load, run, replace, unload.
+- A conformance suite that validates the contract.
+- A small, zero-dependency reference implementation.
+
+Before:
+
+```text
+one adapter for each tool, API, model, and service
+```
+
+After:
+
+```text
+registry.register(plugin)
+```
+
+## Quick Start
+
+Run the reference implementation self-tests:
+
+```bash
+python -B skill.py
+```
+
+Run the conformance suite:
 
 ```bash
 python -B conformance.py
 ```
 
-See [SPEC.md](SPEC.md) for the language-neutral contract.
-
-## Input To Output
+## What Is In This Repository
 
 ```text
-raw capability definition (function / class / API)
-  -> standardized plugin descriptor and runtime handle
+SPEC.md          language-neutral contract
+skill.py         reference implementation
+conformance.py   conformance tests
+SKILL.md         entry for AI coding assistants
 ```
 
-## Use Cases
+## Vision
 
-Suitable for:
+The goal is to make plugin-contract unification a small, neutral integration
+standard:
 
-- hot-swappable plugin frameworks
-- unified orchestration of heterogeneous capabilities
-- plugin-based agent runtimes
+```text
+capability + contract + registry = replaceable system
+```
 
-Not suitable for:
+It should not require developers to adopt a whole agent framework. It should
+be small enough to drop into an existing project and strict enough to make
+different capabilities behave the same way.
 
-- fixed single-capability systems
-- extreme performance paths that cannot tolerate an intermediary layer
+## Roadmap
 
-## Potential Applications
+Current:
 
-This atomic skill can be reused as a lightweight control plane for:
+- language-neutral contract
+- single-file reference implementation
+- conformance suite
 
-- Claude Code / Codex skill and tool loaders
-- DeepSeek Harness compatible plugin registries
-- MCP server and API adapter routing
-- hot-swappable model providers
-- sandbox and permission lifecycle management
-- multi-agent capability orchestration
-- enterprise tool buses that unify internal APIs
-- private vertical skill packages that implement the same contract
+Next:
 
-## Recommended First Applications
+- more examples for common integration patterns
+- CI badges and reproducible conformance results
+- additional language bindings
+- contribution and compatibility guidelines
 
-| Priority | Application | Reason |
-|---|---|---|
-| 1 | Claude Code / Codex skill runtime | Validate the contract in real agent hosts |
-| 2 | Public plugin registry reference | Establish a neutral integration standard |
-| 3 | Tool/API adapter bus | Reuse the same lifecycle for MCP and internal APIs |
-| 4 | Private vertical eggs | Keep proprietary skills compatible without exposing them |
+Later:
 
-## Validation Status
+- production runtime with timeout, isolation, and monitoring
+- hosted registry and governance services
+- private industry-specific plugin systems built on the same contract
 
-- Local `python -B skill.py` self-tests pass.
-- Claude Code and Codex loading is being validated separately.
-- The public release is intended as a reference contract, not as a complete agent runtime.
+## Production Directions
+
+The same contract can be used to build:
+
+- AI coding assistant skill systems
+- enterprise tool and agent buses
+- private industry-specific plugin systems
+- plugin registry services with governance and auditing
+
+Production versions may remain private or use separate licensing. This
+repository only provides the contract, reference implementation, and
+conformance suite.
+
+## Non-Goals
+
+- Not a full agent framework.
+- Not a production or flagship product.
+- Not a clone of any specific framework.
+- Not an official product of any upstream project.
 
 ## License
 
-This public egg is distributed under GPLv3. It is inspired by the public MIT
-design of DeepSeek Harness and is not affiliated with DeepSeek.
+This public implementation is distributed under GPLv3.
 
 See `LICENSE`, `COPYING`, and `NOTICE`.
 
