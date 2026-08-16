@@ -4,7 +4,7 @@
 
 ## 这是什么
 
-从 deepseek-harness（83k+ star）逆向提取的原子剑招：
+受 DeepSeek Harness 公开设计启发的原子剑招：
 强制所有组件遵循同一套生命周期钩子、输入输出 Schema 与错误传播规范，
 用一层 Plugin 中介形态屏蔽底层差异，实现无差别加载、替换与编排。
 
@@ -35,5 +35,7 @@ Claude Code / Codex 可通过 `SKILL.md` 加载本技能。
 ## 许可
 
 本公开蛋代码采用 GPLv3。设计灵感来自 DeepSeek Harness 的公开 MIT 设计，详见 `NOTICE`。
+
+> 免责声明：本项目与 DeepSeek 无隶属关系，仅受其公开 MIT 设计启发。
 
 付费私有蛋为个人买断许可（下载）/ 企业使用条款（API），非代码开源许可。

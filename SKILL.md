@@ -41,6 +41,6 @@ Do not use this skill as a complete agent runtime. It is the minimal atomic cont
 
 ## Source And License
 
-Inspired by the public DeepSeek Harness design released under MIT.
+This project is not affiliated with DeepSeek; it is only inspired by DeepSeek Harness's public MIT design.
 This skill implementation is distributed under GPLv3.
 See `NOTICE` and `LICENSE`.
