@@ -44,6 +44,34 @@ Not suitable for:
 - fixed single-capability systems
 - extreme performance paths that cannot tolerate an intermediary layer
 
+## Potential Applications
+
+This atomic skill can be reused as a lightweight control plane for:
+
+- Claude Code / Codex skill and tool loaders
+- DeepSeek Harness compatible plugin registries
+- MCP server and API adapter routing
+- hot-swappable model providers
+- sandbox and permission lifecycle management
+- multi-agent capability orchestration
+- enterprise tool buses that unify internal APIs
+- private vertical skill packages that implement the same contract
+
+## Recommended First Applications
+
+| Priority | Application | Reason |
+|---|---|---|
+| 1 | Claude Code / Codex skill runtime | Validate the contract in real agent hosts |
+| 2 | Public plugin registry reference | Establish a neutral integration standard |
+| 3 | Tool/API adapter bus | Reuse the same lifecycle for MCP and internal APIs |
+| 4 | Private vertical eggs | Keep proprietary skills compatible without exposing them |
+
+## Validation Status
+
+- Local `python -B skill.py` self-tests pass.
+- Claude Code and Codex loading is being validated separately.
+- The public release is intended as a reference contract, not as a complete agent runtime.
+
 ## License
 
 This public egg is distributed under GPLv3. It is inspired by the public MIT

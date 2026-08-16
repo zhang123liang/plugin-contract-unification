@@ -3,7 +3,7 @@
   "name": "插件契约统一化",
   "name_en": "Plugin Contract Unification",
   "description_en": "Unify heterogeneous functions, classes, and APIs behind one plugin contract with lifecycle, schema, and registry enforcement.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "principle": "interpose",
   "sword": "form-shift",
   "sword_name": "破形式 — 加一层中介",
